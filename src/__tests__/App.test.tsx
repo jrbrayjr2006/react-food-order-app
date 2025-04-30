@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import App from '../App';
 
 describe('App', () => {
@@ -7,6 +7,10 @@ describe('App', () => {
     });
     it('should render App', () => {
         render(<App />);
+    });
+    it('should render Header text', () => {
+        render(<App />);
+        expect(screen.getByText(/Food Order App/i)).toBeInTheDocument();
     });
 
     // Happy Path Tests
