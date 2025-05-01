@@ -6,6 +6,7 @@ function App() {
   return (
     <>
       <Header />
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, aspernatur.</p>
     </>
   )
 }
