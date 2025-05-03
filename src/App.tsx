@@ -1,15 +1,9 @@
 import './App.css'
 import Header from './components/Header'
-import MealCard from './components/MealCard'
+import Meals from './components/Meals'
+import Meal from './domain/Meal';
 import { useState, useEffect } from 'react';
 
-export interface Meal {
-    id: string;
-    name: string;
-    description: string;
-    price: string;
-    image: string;
-}
 
 function App() {
   const [meals, setMeals] = useState<Meal[]>([]);
@@ -22,35 +16,35 @@ function App() {
         id: '1',
         name: 'Pizza',
         description: 'Delicious cheese pizza',
-        price: '$10',
+        price: 10.00,
         image: 'pizza.jpg',
       },
       {
         id: '2',
         name: 'Burger',
         description: 'Juicy beef burger',
-        price: '$8',
+        price: 8.99,
         image: 'burger.jpg',
       },
       {
         id: '3',
         name: 'Chicken Curry',
         description: 'Spicy chicken curry',
-        price: '$12',
+        price: 12.00,
         image: 'chicken_curry.jpg',
       },
       {
         id: '4',
         name: 'Chicken Curry',
         description: 'Spicy chicken curry',
-        price: '$12',
+        price: 12.00,
         image: 'chicken_curry.jpg',
       },
       {
         id: '5',
         name: 'Chicken Curry',
         description: 'Spicy chicken curry',
-        price: '$12',
+        price: 12.00,
         image: 'chicken_curry.jpg',
       },
     ]);
@@ -60,12 +54,7 @@ function App() {
   return (
     <div>
       <Header />
-      <div className="flex flex-col justify-center items-center text-white p-4 lg:flex-row lg:flex-wrap lg:justify-between lg:p-6">
-        {meals.map((meal) => (
-          <MealCard image={meal.image} name={meal.name} description={meal.description} price={meal.price} />
-        ))}
-
-      </div>
+      <Meals meals={meals} />
     </div>
   )
 }
