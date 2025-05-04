@@ -1,5 +1,6 @@
-export async function getMealData() {
-  return await fetch('https://localhost:3000/meals')
-    .then((response) => response.json())
-    .then((data) => data.meals);
-}   
+export async function getMealData() {  
+  const response = await fetch('http://localhost:3000/meals');
+  const mealsJsonData = response.json();
+  console.log("Meals:  ", mealsJsonData);
+  return mealsJsonData
+}

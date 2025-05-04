@@ -3,5 +3,5 @@ export default interface Meal {
     image: string | undefined;
     name: string | undefined;
     description: string | undefined;
-    price: number | undefined;
+    price: string | undefined;
 }
