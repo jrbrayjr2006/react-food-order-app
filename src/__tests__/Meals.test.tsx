@@ -38,10 +38,13 @@ describe('Meals', () => {
     const mealsContextValue = {
         meals: meals,
     };
+
+    const mockUpdateCart = jest.fn();
+
     it('renders the meals correctly', () => {
         render(
             <MealsContext.Provider value={mealsContextValue}>
-                <Meals />
+                <Meals updateCart={mockUpdateCart} />
             </MealsContext.Provider>
         );
         const mealElements = screen.getAllByRole('article');
