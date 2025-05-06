@@ -5,7 +5,7 @@ import Meal from "../domain/Meal";
 
 export default function Meals({ updateCart }: { updateCart: (meal: string | undefined) => void }) { 
     const{ meals } = useContext(MealsContext);
-
+    
 
     return (
         <section className="flex flex-col justify-center items-center text-white p-4 lg:flex-row lg:flex-wrap lg:justify-between lg:p-6">
