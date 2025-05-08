@@ -3,15 +3,16 @@ import { useState } from 'react';
 import Header from './components/Header'
 import Meals from './components/Meals'
 import { MealsContextProvider } from './store/MealsContext';
+import Meal from "./domain/Meal";
 
 
 function App() {
-  const [mealsInCart, setMealsInCart] = useState<string[]>([]);
+  const [mealsInCart, setMealsInCart] = useState<Meal[]>([]);
 
-  function updateCart(meal: string | undefined) {
+  function updateCart(meal: Meal | undefined) {
     console.log(meal);
     if (meal) {
-      setMealsInCart((prevMeals: string[]) => {
+      setMealsInCart((prevMeals: Meal[]) => {
         return [...prevMeals, meal];
       });
     }
@@ -22,7 +23,7 @@ function App() {
   return (
     <div>
       <MealsContextProvider>
-        <Header mealsInCart={mealsInCart.length} />
+        <Header mealsInCart={mealsInCart} />
         <Meals updateCart={updateCart} />
       </MealsContextProvider>
     </div>

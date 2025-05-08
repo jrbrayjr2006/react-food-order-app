@@ -22,7 +22,7 @@ const Modal = forwardRef<DialogRef, DialogProps>(({ children }, ref) => {
   }));
   return (
     createPortal(
-      <dialog ref={dialogRef} className="bg-modalBackground rounded-sm mx-auto justify-center mt-20" >
+      <dialog ref={dialogRef} className="bg-modalBackground rounded-sm mx-auto justify-center mt-20 w-1/3" >
           {children}
       </dialog>, document.getElementById('modal-root') as HTMLElement // Ensure this ID matches your HTML structure
     )

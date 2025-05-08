@@ -1,13 +1,14 @@
 import { useRef } from "react";
 import logoImage from '../assets/logo.jpg';
 import Modal from "./Modal";
+import Meal from "../domain/Meal";
 
 interface HeaderProps {
-    mealsInCart: number;
+    mealsInCart: Meal[];
 }
 
 export default function Header({mealsInCart}: HeaderProps) {
-    const num = mealsInCart;
+    const num = mealsInCart.length;
 
     console.log("Header mealsInCart: ", mealsInCart);
     const modalRef = useRef<HTMLDialogElement | null>(null);
@@ -46,9 +47,18 @@ export default function Header({mealsInCart}: HeaderProps) {
                 <div className="flex flex-col bg-modalBackground items-start justify-center text-darkBackground p-4">
                     <h2 className="text-2xl font-bold mb-4">Cart</h2>
                     <p className="text-lg">You have {num} items in your cart.</p>
+                    <div className="flex flex-col mt-4">
+                        {mealsInCart.map((meal: Meal) => (
+                            <div key={meal.id} className="flex items-center justify-between w-full p-2 border-b border-gray-300">
+                                <span>{meal.name}</span>
+                                <span className="mx-1">-</span>
+                                <span>${meal.price}</span>
+                            </div>
+                        ))}
+                    </div>
                     <div className="flex flex-col lg:flex-row">
                         <button onClick={closeModalHandler} className="text-black px-4 py-2 rounded-md mt-4 hover:text-semibold">Close</button>
-                        <button onClick={handleOpenCheckout} className="bg-menuButtonBackground text-black rounded-lg px-4 py-2 rounded-md mt-4 ml-4 hover:text-semibold">Go to Checkout</button>
+                        <button onClick={handleOpenCheckout} className="button-primary">Go to Checkout</button>
                     </div>
                 </div>
             </Modal>
