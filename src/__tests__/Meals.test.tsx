@@ -9,28 +9,28 @@ const meals:  Meal[] = [
     name: 'Sushi',
     image: 'https://example.com/sushi.jpg',
     description: 'Finest fish and veggies',
-    price: "22.99",
+    price: 22.99,
   },
   {
     id: '2',
     name: 'Schnitzel',
     image:  'https://example.com/schnitzel.jpg',
     description: 'A german specialty!',
-    price: "16.50",
+    price: 16.50,
   },
   {
     id: '3',
     name: 'Barbecue Burger',
     image: 'https://example.com/barbecue-burger.jpg',
     description: 'American, raw, meaty',
-    price: "12.99",
+    price: 12.99,
   },
   {
     id: '4',
     name: 'Green Bowl',
     image: 'https://example.com/green-bowl.jpg',
     description: 'Healthy...and green...',
-    price: "18.99",
+    price: 18.99,
   },
 ];
 

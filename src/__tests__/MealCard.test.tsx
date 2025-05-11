@@ -7,7 +7,7 @@ const meal: Meal = {
     id: "01",
     name: "Breakfast",
     description: "Meal Description Lorem ipsum dolor, sit amet consectetur adipisicing.",
-    price: "10.99",
+    price: 10.99,
     image: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
 };
 
