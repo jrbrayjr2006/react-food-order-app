@@ -11,6 +11,7 @@ import { ReactNode } from "react";
 
 type DialogProps = {
   children: ReactNode;
+  className?: string;
 };
 
 const Modal = forwardRef<DialogRef, DialogProps>(({ children }, ref) => {
@@ -20,9 +21,13 @@ const Modal = forwardRef<DialogRef, DialogProps>(({ children }, ref) => {
     close: () => dialogRef.current?.close(),
     showModal: () => dialogRef.current?.showModal(),
   }));
+  let dialogClassName = "bg-modalBackground rounded-sm mx-auto justify-center mt-20 w-1/3";
+  if (dialogRef.current) {
+    dialogClassName = `${dialogClassName} ${dialogRef.current.className}`;
+  }
   return (
     createPortal(
-      <dialog ref={dialogRef} className="bg-modalBackground rounded-sm mx-auto justify-center mt-20 w-1/3" >
+      <dialog ref={dialogRef} className={dialogClassName} >
           {children}
       </dialog>, document.getElementById('modal-root') as HTMLElement // Ensure this ID matches your HTML structure
     )
