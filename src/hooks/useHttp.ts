@@ -15,6 +15,12 @@ export default function useHttp({url, config, initialData}: {url: string, config
     const [data, setData] = useState(initialData || null);
     const [error, setError] = useState<string | null>();
 
+    function clearData() {
+        setData(initialData || null);
+        setError(null);
+        setIsLoading(false);
+    }
+
     const sendRequest = useCallback(async function sendRequst(
         url: string,
         config: {method: string, body?: string, headers?: HeadersInit},
@@ -48,5 +54,6 @@ export default function useHttp({url, config, initialData}: {url: string, config
         data,
         error,
         sendRequest,
+        clearData,
     }
 }

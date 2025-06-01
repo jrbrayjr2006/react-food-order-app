@@ -1,3 +1,4 @@
+import useHttp from "../hooks/useHttp";
 
 
 type CheckoutProps = {
@@ -5,8 +6,29 @@ type CheckoutProps = {
     close: () => void;
 };
 
+const requestConfig = {
+    method: 'POST',
+    body: JSON.stringify({
+        cardNumber: '1234 5678 9012 3456',
+        expiryDate: '12/23',
+        cvv: '123',
+        billingAddress: '123 Main St, City, Country',
+        zipCode: '12345',
+        phoneNumber: '+1 234 567 8900',
+        email: 'somemail@email.com'
+    }),
+    headers: {
+        'Content-Type': 'application/json',
+    },
+};
+
 
 export default function Checkout({ showModal, close }: CheckoutProps) {
+    const {isLoading, data, error, sendRequest, clearData} = useHttp({
+        url: 'https://localhost:5173/checkout',
+        config: requestConfig,
+        initialData: null,
+    });
 
     function handleCheckout(event: React.MouseEvent<HTMLButtonElement>) {
         event.preventDefault();
@@ -16,7 +38,7 @@ export default function Checkout({ showModal, close }: CheckoutProps) {
             showModal();
         }, 2000);
         // Here you would typically handle the payment processing
-        fetch('https://api.example.com/checkout', {
+        fetch('https://localhost:5173/checkout', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
